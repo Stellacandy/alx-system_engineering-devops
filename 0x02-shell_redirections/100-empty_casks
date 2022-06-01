@@ -1,2 +1,2 @@
 #!/bin/bash
-100. Empty casks find . -empty | rev | cut -d '/' -f 1 | rev
+ -empty -printf "%f\n"
