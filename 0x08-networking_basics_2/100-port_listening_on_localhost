@@ -1,0 +1,5 @@
+able file 4 lines (3 sloc) 75 Bytes
+#!/usr/bin/env bash
+# Listens on port 98 on localhost.
+
+nc -l localhost 98
