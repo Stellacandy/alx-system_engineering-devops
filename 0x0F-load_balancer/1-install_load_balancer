@@ -1,23 +1,20 @@
 #!/usr/bin/env bash
-# Installs and setup haproxy
+# configures a new HAproxy as a load balancer
 
-apt-get install -y software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-1.8
+# Install HAproxy on a server
 apt-get -y update
-apt-get install -y haproxy=1.8.\*
+apt-get -y install haproxy=1.6.\*
 
-echo "ENABLED=1" > /etc/default/haproxy
+# Configure haproxy configuration file to distribute requests using a roundrobin algorithm
+echo '
+frontend Stellacandy.tech
+	bind 0:80
+        default_backend web_servers
+backend web_servers
+        balance roundrobin
+        server 53206-web-01 100.25.145.212:80
+        server 53206-web-02 18.210.33.8:80
+' >> /etc/haproxy/haproxy.cfg
 
-# Listen to web1 and web2 servers                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-echo "
-   listen load_balancer
-   bind *:80
-   mode http
-   balance roundrobin
-   option httpclose
-   option forwardfor
-   server 53206-web-01 100.25.145.212:80 check
-   server 53206-web-02 18.210.33.8:80 check
-" >> /etc/haproxy/haproxy.cfg
-
-service haproxy start
+# Restart HAproxy service
+service haproxy restart
