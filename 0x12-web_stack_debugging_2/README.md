@@ -1,4 +1,6 @@
 My Read me
+<<<<<<< HEAD
+=======
 0X12-Web_Stack_Debugging_2
 
     Debugging usually takes a big chunk of a software engineer’s time. The art of debugging is tough and it takes years, even decades to master, and that is why seasoned software engineers are the best at it… experience. They have seen lots of broken code, buggy systems, weird edge cases and race conditions.
@@ -14,3 +16,4 @@ Requirements
     Your Bash scripts must run without error
     The first line of all your Bash scripts should be exactly #!/usr/bin/env bash
     The second line of all your Bash scripts should be a comment explaining what is the script doing
+>>>>>>> 22310331491abb769f398378991dc4d3205b7344
